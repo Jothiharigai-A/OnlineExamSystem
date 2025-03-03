@@ -1,9 +1,9 @@
-/* Reset Default Styles */
+/* Reset Styles */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Georgia', serif;
+    font-family: 'Poppins', sans-serif;
 }
 
 /* Body Styling */
@@ -13,99 +13,93 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
-    text-align: center;
+    padding: 20px;
 }
 
 /* Main Container */
 .container {
     display: flex;
+    width: 85%;
+    max-width: 1200px;
+    background-color: #f8f5ed;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Left Section */
+.left-section {
+    flex: 1;
+    display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+}
+
+.college-title {
+    font-size: 38px;
+    font-weight: bold;
+    color: #2E4A50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.department {
+    font-size: 16px;
+    color: #8B5E3B;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* Image Styling */
+.image-wrapper {
+    display: flex;
+    justify-content: center;
     align-items: center;
     width: 100%;
     padding: 20px;
 }
 
-/* College Title */
-.college-title {
-    font-size: 30px;
-    font-weight: bold;
-    color: #2E4A50; /* Deep green */
-    text-transform: uppercase;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-    padding-bottom: 20px;
+.college-image {
+    width: 80%;
+    max-width: 350px;
+    height: auto;
+    border-radius: 30px;
+    object-fit: cover;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* Blackboard Style */
-.blackboard {
-    width: 600px;
-    height: 350px;
-    background-color: #2E4A50; /* Blackboard color */
-    border: 15px solid #b57f50; /* Wooden frame */
-    border-radius: 12px;
-    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+/* Right Section */
+.right-section {
+    flex: 1;
+    background-color: #2E4A50;
     display: flex;
     flex-direction: column;
-    align-items: center;
     justify-content: center;
-    position: relative;
-    padding: 40px; /* Adjusted padding */
+    padding: 50px;
+    align-items: center;
 }
 
-/* Exam Message */
-.exam-message {
-    font-family: 'Dancing Script', cursive;
-    font-size: 28px;
-    color: #fff;
+/* Navigation Links */
+.nav-link {
+    color: white;
+    font-size: 22px;
     font-weight: bold;
-    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
-    margin-bottom: 30px; /* Increased margin */
-}
-
-/* Links Container */
-.links {
-    display: flex;
-    justify-content: space-around;
-    width: 100%;
-    margin-bottom: 25px;
-}
-
-/* Links Styling */
-.link, .staff-link {
-    font-size: 18px;
-    color: #f8d7af;
     text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease-in-out;
-    padding: 10px 15px;
+    padding: 18px 0;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+    transition: all 0.3s ease-in-out;
 }
 
-.link:hover, .staff-link:hover {
-    color: #ffcc99;
-    text-decoration: underline;
+.nav-link:last-child {
+    border-bottom: none;
 }
 
-/* Staff Login */
-.staff-link {
-    margin-top: 15px;
-}
-
-/* Chalk Pieces */
-.blackboard::before,
-.blackboard::after {
-    content: "";
-    position: absolute;
-    bottom: 15px;
-    width: 50px;
-    height: 8px;
-    border-radius: 4px;
-}
-
-.blackboard::before {
-    background-color: #f8d7af; /* Light pink chalk */
-    left: 20px;
-}
-
-.blackboard::after {
-    background-color: #98c1a9; /* Green chalk */
-    right: 20px;
+.nav-link:hover {
+    color: #FFD700;
+    border-bottom: 1px solid #FFD700;
 }

@@ -1,0 +1,29 @@
+body {
+    background-color: #121212;
+    color: white;
+    font-family: 'Poppins', sans-serif;
+}
+.tutorial-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+.tutorial-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+.tutorial-card img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px 12px 0 0;
+}
+.tutorial-card:hover {
+    transform: scale(1.05);
+}
+.card-body {
+    padding: 10px;
+    text-align: center;
+}
