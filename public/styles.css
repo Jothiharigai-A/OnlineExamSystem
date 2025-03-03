@@ -1,0 +1,111 @@
+/* Reset Default Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Georgia', serif;
+}
+
+/* Body Styling */
+body {
+    background-color: #f8f5ed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+
+/* Main Container */
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+}
+
+/* College Title */
+.college-title {
+    font-size: 30px;
+    font-weight: bold;
+    color: #2E4A50; /* Deep green */
+    text-transform: uppercase;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+    padding-bottom: 20px;
+}
+
+/* Blackboard Style */
+.blackboard {
+    width: 600px;
+    height: 350px;
+    background-color: #2E4A50; /* Blackboard color */
+    border: 15px solid #b57f50; /* Wooden frame */
+    border-radius: 12px;
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    padding: 40px; /* Adjusted padding */
+}
+
+/* Exam Message */
+.exam-message {
+    font-family: 'Dancing Script', cursive;
+    font-size: 28px;
+    color: #fff;
+    font-weight: bold;
+    text-shadow: 1px 1px 5px rgba(255, 255, 255, 0.5);
+    margin-bottom: 30px; /* Increased margin */
+}
+
+/* Links Container */
+.links {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+/* Links Styling */
+.link, .staff-link {
+    font-size: 18px;
+    color: #f8d7af;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease-in-out;
+    padding: 10px 15px;
+}
+
+.link:hover, .staff-link:hover {
+    color: #ffcc99;
+    text-decoration: underline;
+}
+
+/* Staff Login */
+.staff-link {
+    margin-top: 15px;
+}
+
+/* Chalk Pieces */
+.blackboard::before,
+.blackboard::after {
+    content: "";
+    position: absolute;
+    bottom: 15px;
+    width: 50px;
+    height: 8px;
+    border-radius: 4px;
+}
+
+.blackboard::before {
+    background-color: #f8d7af; /* Light pink chalk */
+    left: 20px;
+}
+
+.blackboard::after {
+    background-color: #98c1a9; /* Green chalk */
+    right: 20px;
+}
