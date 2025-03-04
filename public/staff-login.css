@@ -1,9 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Student Login</title>
-  <style>
+
     /* Reset Defaults */
     * {
       margin: 0;
@@ -84,7 +79,7 @@
       margin-bottom: 15px;
       border: none;
       border-radius: 4px;
-      background-color: #999; /* Gray fields from reference image */
+      background-color: #999; /* Gray fields from reference */
       color: #fff; /* White text for contrast */
       font-size: 14px;
     }
@@ -107,31 +102,3 @@
     .form-box button:hover {
       background-color: #ddd;
     }
-  </style>
-</head>
-<body>
-  <div class="login-container">
-    <!-- Left (Cream) Panel -->
-    <div class="left-panel">
-      <!-- Replace 'checkmark.png' with your actual icon file -->
-      <img src="/images/login.png" alt="Checkmark Icon">
-    </div>
-
-    <!-- Right (Dark Green) Panel with Form -->
-    <div class="right-panel">
-      <div class="form-box">
-        <h2>Student Login</h2>
-        <form action="/student-login" method="POST">
-          <label for="name">NAME</label>
-          <input type="text" id="name" name="name" required>
-
-          <label for="regNo">reg no</label>
-          <input type="text" id="regNo" name="regNo" required>
-
-          <button type="submit">login</button>
-        </form>
-      </div>
-    </div>
-  </div>
-</body>
-</html>

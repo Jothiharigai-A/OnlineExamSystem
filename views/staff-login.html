@@ -1,20 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Login</title>
+  <meta charset="UTF-8">
+  <title>Staff Login</title>
+  <link rel="stylesheet" href="staff-login.css">
 </head>
 <body>
-    <h2>Staff Login</h2>
-    <form action="/staff-dashboard" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+  <div class="login-container">
+    <!-- Left (Cream) Panel -->
+    <div class="left-panel">
+      <!-- Replace 'checkmark.png' with your actual icon file -->
+      <img src="images/login.png" alt="Checkmark Icon">
+    </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+    <!-- Right (Dark Green) Panel with Form -->
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Staff Login</h2>
+        <form action="/staff-dashboard" method="POST">
+          <label for="username">user NAME</label>
+          <input type="text" id="username" name="username" required>
 
-        <button type="submit">Login</button>
-    </form>
+          <label for="password">password</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">login</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
