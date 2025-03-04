@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exam Results</title>
+</head>
+<body>
+    <h1>Exam Results</h1>
+    
+    <p>Student Name: <span id="studentName"></span></p>
+    <p>Registration No: <span id="studentRegNo"></span></p>
+    <p>Score: <span id="studentScore"></span></p>
+
+    <script>
+        const student = JSON.parse(sessionStorage.getItem("student"));
+
+        fetch("/api/get-students")
+            .then(response => response.json())
+            .then(data => {
+                const studentData = data.find(s => s.regNo === student.regNo);
+                if (studentData) {
+                    document.getElementById("studentName").innerText = studentData.name;
+                    document.getElementById("studentRegNo").innerText = studentData.regNo;
+                    document.getElementById("studentScore").innerText = studentData.score;
+                }
+            })
+            .catch(error => console.error("Error loading results:", error));
+    </script>
+</body>
+</html>

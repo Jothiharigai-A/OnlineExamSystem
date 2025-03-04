@@ -49,6 +49,11 @@
         function goBack() {
             window.location.href = "/";
         }
+        app.get('/tutorials', (req, res) => {
+    // Serve the HTML page instead of returning JSON
+    res.sendFile(path.join(__dirname, 'views', 'tutorials.html'));
+});
+
     </script>
 </body>
 </html>
