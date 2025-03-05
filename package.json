@@ -1,4 +1,4 @@
-{ "start": "node server.js",
+{ 
   "name": "onlineexamsystem",
   "version": "1.0.0",
   "main": "index.js",
@@ -15,6 +15,11 @@
     "express": "^4.21.2",
     "express-session": "^1.18.1"
   },
-  "description": ""
+  "description": "",
+  "scripts": {
+   "start": "node server.js",
+   "build": "echo 'No build step needed' "
+}
+
   
 }
