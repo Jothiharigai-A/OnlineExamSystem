@@ -6,13 +6,14 @@ const fs = require('fs');
 
 const app = express();
 
-const PORT = process.env.PORT || 8080;  // Use Railway-assigned port
-app.listen(PORT, () => {
-    console.log(`✅ Server running on port ${PORT}`);
-});
+const PORT = process.env.PORT || 8080; // Railway provides a PORT variable
 
 app.get("/", (req, res) => {
-    res.send("Server is running!");
+  res.send("Server is running!");
+});
+
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
   });
 
 
