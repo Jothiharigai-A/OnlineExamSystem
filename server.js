@@ -5,17 +5,7 @@ const session = require('express-session');
 const fs = require('fs');
 
 const app = express();
-
-const PORT = process.env.PORT || 8080; // Railway provides a PORT variable
-
-app.get("/", (req, res) => {
-  res.send("Server is running!");
-});
-
-app.listen(PORT, () => {
-    console.log(`✅ Server running on port ${PORT}`);
-  });
-
+const PORT = 3000;
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -113,11 +103,7 @@ app.get('/staff-dashboard', (req, res) => {
 app.get('/student-login', (req, res) => 
     res.sendFile(path.join(__dirname, 'views', 'student-login.html'))
   );
-  // Graceful shutdown to prevent SIGTERM issues
-process.on("SIGTERM", () => {
-    console.log("Shutting down gracefully...");
-    process.exit(0);
-  });
+  
   // Handle Student Login via POST
   app.post('/student-login', (req, res) => {
       const { name, regNo } = req.body;
@@ -214,6 +200,6 @@ app.get('/logout', (req, res) => {
 /* ----------------------------------------
    START SERVER
    ---------------------------------------- */
-//app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
 
 
