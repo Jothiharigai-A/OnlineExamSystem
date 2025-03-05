@@ -5,7 +5,12 @@ const session = require('express-session');
 const fs = require('fs');
 
 const app = express();
-const PORT = 3000;
+
+const PORT = process.env.PORT || 3000;  // Use Railway-assigned port
+app.listen(PORT, () => {
+    console.log(`✅ Server running on port ${PORT}`);
+});
+
 
 // Middleware
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -200,6 +205,6 @@ app.get('/logout', (req, res) => {
 /* ----------------------------------------
    START SERVER
    ---------------------------------------- */
-app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+//app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
 
 
