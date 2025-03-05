@@ -99,43 +99,37 @@ app.get('/staff-dashboard', (req, res) => {
     res.send(studentData);
 });
 
-/* ----------------------------------------
-   STUDENT LOGIN
-   ---------------------------------------- */
-app.get('/student-login', (req, res) => {
-    res.sendFile(path.join(__dirname, 'views', 'student-login.html'));
-});
-
-app.post('/student-login', (req, res) => {
-    const { name, regNo } = req.body;
-    if (!name || !regNo) {
-        return res.send("<script>alert('Please enter name and registration number.'); window.location.href='/student-login';</script>");
-    }
-
-    let students = readStudentData();
-    let existingStudent = students.find(student => student.regNo === regNo);
-
-    // If student exists & has a score, they've taken the exam => go to results
-    if (existingStudent) {
-        if (existingStudent.score > 0) {
-            return res.redirect('/result');
-        } else {
-            // Not taken the exam yet => proceed
-            req.session.student = existingStudent;
-            return res.redirect('/exam');
-        }
-    }
-
-    // New Student => create record
-    req.session.student = { name, regNo, score: 0 };
-    students.push(req.session.student);
-    saveStudentData(students);
-    res.redirect('/exam');
-});
-
-/* ----------------------------------------
-   EXAM PAGE
-   ---------------------------------------- */
+/// Student Login Page: Serve the login HTML file
+app.get('/student-login', (req, res) => 
+    res.sendFile(path.join(__dirname, 'views', 'student-login.html'))
+  );
+  
+  // Handle Student Login via POST
+  app.post('/student-login', (req, res) => {
+      const { name, regNo } = req.body;
+      let students = readStudentData();
+      let existingStudent = students.find(student => student.regNo === regNo);
+  
+      if (existingStudent) {
+          // If they've already taken the exam, redirect to result
+          if (existingStudent.attempted) {
+              return res.redirect('/result');
+          } else {
+              // Overwrite session data with existing student's info and redirect to exam
+              req.session.student = existingStudent;
+              return res.redirect('/exam');
+          }
+      } else {
+          // Create a new student record
+          const newStudent = { name, regNo, score: 0, attempted: false };
+          students.push(newStudent);
+          saveStudentData(students);
+          req.session.student = newStudent;
+          return res.redirect('/exam');
+      }
+  });
+  
+// Exam Page
 app.get('/exam', (req, res) => {
     if (!req.session.student) {
         return res.send("<script>alert('Session expired. Please log in again.'); window.location.href='/student-login';</script>");
@@ -143,9 +137,7 @@ app.get('/exam', (req, res) => {
     res.sendFile(path.join(__dirname, 'views', 'exam.html'));
 });
 
-/* ----------------------------------------
-   SUBMIT EXAM
-   ---------------------------------------- */
+// Handle Exam Submission
 app.post('/submit-exam', (req, res) => {
     if (!req.session.student) {
         return res.send("<script>alert('Session expired. Please log in again.'); window.location.href='/student-login';</script>");
@@ -155,29 +147,29 @@ app.post('/submit-exam', (req, res) => {
     let studentIndex = students.findIndex(student => student.regNo === req.session.student.regNo);
 
     if (studentIndex === -1) {
-        return res.send("<script>alert('Student not found. Please login again.'); window.location.href='/student-login';</script>");
+        return res.send("<script>alert('Student not found. Please log in again.'); window.location.href='/student-login';</script>");
     }
 
-    // Basic example: q1, q2, q3
     let score = 0;
+    // For example, check three questions. Expand this for 10 questions per section.
     if (req.body.q1 === "correct") score++;
     if (req.body.q2 === "correct") score++;
     if (req.body.q3 === "correct") score++;
 
-    // Update student's score in session & JSON
+    // Update student's score and mark exam as attempted
     req.session.student.score = score;
+    req.session.student.attempted = true;
     students[studentIndex].score = score;
+    students[studentIndex].attempted = true;
     saveStudentData(students);
 
     res.redirect('/result');
 });
 
-/* ----------------------------------------
-   RESULT PAGE
-   ---------------------------------------- */
+// Result Page
 app.get('/result', (req, res) => {
     if (!req.session.student) {
-        return res.send("<script>alert('No student data found. Please login again.'); window.location.href='/student-login';</script>");
+        return res.send("<script>alert('No student data found. Please log in again.'); window.location.href='/student-login';</script>");
     }
 
     let students = readStudentData();
@@ -187,7 +179,6 @@ app.get('/result', (req, res) => {
         return res.send("<script>alert('Student not found.'); window.location.href='/student-login';</script>");
     }
 
-    // Render a simple HTML with student results
     res.send(`
         <h2>Exam Results</h2>
         <p><strong>Student Name:</strong> ${student.name}</p>
@@ -197,16 +188,18 @@ app.get('/result', (req, res) => {
     `);
 });
 
-/* ----------------------------------------
-   LOGOUT
-   ---------------------------------------- */
+
+//LOGOUT
 app.get('/logout', (req, res) => {
     req.session.destroy(() => {
-        res.redirect('/');
+        res.redirect('/'); 
     });
 });
+
 
 /* ----------------------------------------
    START SERVER
    ---------------------------------------- */
 app.listen(PORT, () => console.log(`✅ Server running on http://localhost:${PORT}`));
+
+

@@ -1,20 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Staff Login</title>
+  <meta charset="UTF-8">
+  <title>Staff Login</title>
+  <style>
+    /* Reset Defaults */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Full-viewport background */
+    body {
+      background-color: #f8f5f1; /* Light background from reference */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    /* Outer Container with Shadow */
+    .login-container {
+      width: 700px;
+      height: 350px;
+      display: flex;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    /* Left Panel (Cream) with Checkmark Icon */
+    .left-panel {
+      flex: 1;
+      background-color: #f5f1ee;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .left-panel img {
+      width: 120px;
+      height: auto;
+    }
+
+    /* Right Panel (Dark Green) */
+    .right-panel {
+      flex: 1;
+      background-color: #1f3a38; /* Dark green */
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      padding: 20px;
+    }
+
+    /* Form Container */
+    .form-box {
+      width: 250px;
+    }
+
+    .form-box h2 {
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      font-size: 18px;
+    }
+
+    /* Labels */
+    .form-box label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      text-transform: uppercase;
+      font-size: 13px;
+    }
+
+    /* Input Fields */
+    .form-box input {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 4px;
+      background-color: #999; /* Gray fields from reference */
+      color: #fff; /* White text for contrast */
+      font-size: 14px;
+    }
+
+    /* Login Button */
+    .form-box button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 4px;
+      background-color: #fff;
+      color: #1f3a38;
+      font-weight: bold;
+      cursor: pointer;
+      font-size: 14px;
+      transition: background-color 0.3s;
+      text-transform: uppercase;
+    }
+
+    .form-box button:hover {
+      background-color: #ddd;
+    }
+  </style>
 </head>
 <body>
-    <h2>Staff Login</h2>
-    <form action="/staff-dashboard" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required><br>
+  <div class="login-container">
+    <!-- Left (Cream) Panel -->
+    <div class="left-panel">
+      <!-- Replace 'checkmark.png' with your actual icon file -->
+      <img src="images/login.png" alt="Checkmark Icon">
+    </div>
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
+    <!-- Right (Dark Green) Panel with Form -->
+    <div class="right-panel">
+      <div class="form-box">
+        <h2>Staff Login</h2>
+        <form action="/staff-dashboard" method="POST">
+          <label for="username">user NAME</label>
+          <input type="text" id="username" name="username" required>
 
-        <button type="submit">Login</button>
-    </form>
+          <label for="password">password</label>
+          <input type="password" id="password" name="password" required>
+
+          <button type="submit">login</button>
+        </form>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
