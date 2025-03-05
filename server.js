@@ -113,7 +113,11 @@ app.get('/staff-dashboard', (req, res) => {
 app.get('/student-login', (req, res) => 
     res.sendFile(path.join(__dirname, 'views', 'student-login.html'))
   );
-  
+  // Graceful shutdown to prevent SIGTERM issues
+process.on("SIGTERM", () => {
+    console.log("Shutting down gracefully...");
+    process.exit(0);
+  });
   // Handle Student Login via POST
   app.post('/student-login', (req, res) => {
       const { name, regNo } = req.body;
