@@ -1,4 +1,4 @@
-{
+{ "start": "node server.js",
   "name": "onlineexamsystem",
   "version": "1.0.0",
   "main": "index.js",
@@ -16,4 +16,5 @@
     "express-session": "^1.18.1"
   },
   "description": ""
+  
 }
